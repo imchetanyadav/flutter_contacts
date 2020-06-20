@@ -132,10 +132,10 @@ public class ContactsServicePlugin implements MethodCallHandler, FlutterPlugin, 
         }
         break;
       } case "openExistingContact" :{
-        final Contact contact = Contact.fromMap((HashMap)call.argument("contact"));
+        final String identifier = call.argument("identifier");
         if (delegate != null) {
           delegate.setResult(result);
-          delegate.openExistingContact(contact);
+          delegate.openExistingContact(identifier);
         } else {
           result.success(FORM_COULD_NOT_BE_OPEN);
         }
@@ -282,8 +282,7 @@ public class ContactsServicePlugin implements MethodCallHandler, FlutterPlugin, 
       return false;
     }
 
-    void openExistingContact(Contact contact) {
-      String identifier = contact.identifier;
+    void openExistingContact(String identifier) {
       try {
         HashMap contactMapFromDevice = getContactByIdentifier(identifier);
         // Contact existence check

@@ -97,9 +97,9 @@ class ContactsService {
    return _handleFormOperation(result);
   }
 
-  static Future<Contact> openExistingContact(Contact contact, {bool iOSLocalizedLabels = true}) async {
+  static Future<Contact> openExistingContact(String identifier, {bool iOSLocalizedLabels = true}) async {
    dynamic result = await _channel.invokeMethod('openExistingContact',<String,dynamic>{
-     'contact': Contact._toMap(contact),
+     'identifier': identifier,
      'iOSLocalizedLabels': iOSLocalizedLabels,
    }, );
    return _handleFormOperation(result);
