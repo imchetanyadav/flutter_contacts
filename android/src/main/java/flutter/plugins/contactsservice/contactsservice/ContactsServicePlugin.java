@@ -289,7 +289,7 @@ public class ContactsServicePlugin implements MethodCallHandler, FlutterPlugin, 
         // Contact existence check
         if(contactMapFromDevice != null) {
           Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, identifier);
-          Intent intent = new Intent(Intent.ACTION_EDIT);
+          Intent intent = new Intent(Intent.ACTION_VIEW);
           intent.setDataAndType(uri, ContactsContract.Contacts.CONTENT_ITEM_TYPE);
           intent.putExtra("finishActivityOnSaveCompleted", true);
           startIntent(intent, REQUEST_OPEN_EXISTING_CONTACT);
