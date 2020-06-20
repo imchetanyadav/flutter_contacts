@@ -97,12 +97,11 @@ class ContactsService {
    return _handleFormOperation(result);
   }
 
-  static Future<Contact> openExistingContact(String identifier, {bool iOSLocalizedLabels = true}) async {
-   dynamic result = await _channel.invokeMethod('openExistingContact',<String,dynamic>{
+  static openExistingContact(String identifier, {bool iOSLocalizedLabels = true}) async {
+   await _channel.invokeMethod('openExistingContact',<String,dynamic>{
      'identifier': identifier,
      'iOSLocalizedLabels': iOSLocalizedLabels,
    }, );
-   return _handleFormOperation(result);
   }
 
   // Displays the device/native contact picker dialog and returns the contact selected by the user
